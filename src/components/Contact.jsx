@@ -229,7 +229,7 @@ const Contact = () => {
       </motion.div>
 
       <footer className="mt-20 text-center text-gray-600 text-sm">
-        &copy; {new Date().getFullYear()} Mohammad Zaid. All rights reserved.
+        &copy; {new Date().getFullYear()} Mohammad zaid. All rights reserved.
       </footer>
     </section>
   );
