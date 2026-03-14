@@ -1,10 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowDown } from "lucide-react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const TypewriterText = ({ text, delay = 0, className = "" }) => {
   const letters = Array.from(text);

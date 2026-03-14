@@ -12,14 +12,6 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if we've already loaded this session to skip loader
-    // const hasLoaded = sessionStorage.getItem("hasLoaded");
-    // if (hasLoaded) {
-    //   setLoading(false);
-    // } else {
-    //   sessionStorage.setItem("hasLoaded", "true");
-    // }
-
     const lenis = new Lenis({
       duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

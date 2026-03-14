@@ -1,17 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  Code2,
-  Palette,
-  Terminal,
-  Globe,
-  Cpu,
-  Database,
-  Zap,
-  Server,
-  Github,
-} from "lucide-react";
+import { Code2, Palette, Terminal, Cpu } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -115,16 +105,14 @@ const About = () => {
               <div className="flex flex-wrap gap-3">
                 {[
                   "React",
-                  // "Next.js",
                   "JavaScript (ES6+)",
-                  // "TypeScript",
                   "HTML5",
                   "CSS3",
                   "Tailwind CSS",
                 ].map((tech) => (
                   <div
                     key={tech}
-                    className="px-4 py-2 bg-zinc-900 border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white hover:border-primary/50 transition-colors"
+                    className="px-4 py-2 bg-zinc-900 cursor-pointer border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white hover:border-primary/50 transition-colors"
                   >
                     {tech}
                   </div>
@@ -138,16 +126,10 @@ const About = () => {
                 <Palette size={16} /> Creative & Animation
               </h4>
               <div className="flex flex-wrap gap-3">
-                {[
-                  "GSAP",
-                  "Framer Motion",
-                  // "Three.js",
-                  "Lenis Scroll",
-                  "Canvas API",
-                ].map((tech) => (
+                {["GSAP", "Framer Motion", "Lenis Scroll"].map((tech) => (
                   <div
                     key={tech}
-                    className="px-4 py-2 bg-zinc-900 border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white hover:border-secondary/50 transition-colors"
+                    className="px-4 py-2 bg-zinc-900 cursor-pointer border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white hover:border-secondary/50 transition-colors"
                   >
                     {tech}
                   </div>
@@ -158,20 +140,15 @@ const About = () => {
             {/* Backend & Tools */}
             <div>
               <h4 className="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider flex items-center gap-2">
-                <Terminal size={16} /> Backend & Tools
+                <Terminal size={16} />
+                 {/* Backend & */}
+                 Tools
               </h4>
               <div className="flex flex-wrap gap-3">
-                {[
-                  // "Node.js",
-                  // "Express",
-                  "MongoDB",
-                  "Git & GitHub",
-                  "Vite",
-                  "Figma",
-                ].map((tech) => (
+                {["Git & GitHub", "Vite", "Figma"].map((tech) => (
                   <div
                     key={tech}
-                    className="px-4 py-2 bg-zinc-900 border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white hover:border-green-500/50 transition-colors"
+                    className="px-4 py-2 bg-zinc-900 cursor-pointer border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white hover:border-green-500/50 transition-colors"
                   >
                     {tech}
                   </div>

@@ -1,5 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
-import { PortfolioContext } from "../context/PortfolioContext";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import {
@@ -10,13 +9,11 @@ import {
   Send,
   Loader2,
   CheckCircle,
-  AlertCircle,
 } from "lucide-react";
 
 const Contact = () => {
-  const { addMessage } = useContext(PortfolioContext);
   const formRef = useRef();
-  const [status, setStatus] = useState("idle"); // idle, sending, success, error
+  const [status, setStatus] = useState("idle"); // idle | sending | success
 
   const Links = [
     { icon: Github, url: "https://github.com/zaid-shk" },
@@ -28,34 +25,18 @@ const Contact = () => {
     e.preventDefault();
     setStatus("sending");
 
-    // Capture form data for Admin Panel
-    const formData = new FormData(formRef.current);
-    const newMessage = {
-      name: formData.get("user_name"),
-      email: formData.get("user_email"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
-    };
-
-    // REPLACE THESE WITH YOUR ACTUAL EMAILJS SERVICE ID, TEMPLATE ID, AND PUBLIC KEY
-    // Sign up at https://www.emailjs.com/ to get these keys
     const SERVICE_ID = "service_pc56nhq";
     const TEMPLATE_ID = "template_h6jejil";
     const PUBLIC_KEY = "CW6TOe3tClG4X46oe";
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY).then(
-      (result) => {
-        console.log("Email sent:", result.text);
+      () => {
         setStatus("success");
-        addMessage(newMessage);
         formRef.current.reset();
         setTimeout(() => setStatus("idle"), 3000);
       },
-      (error) => {
-        console.error("EmailJS Error:", error.text);
-        // Fallback for demo: Still save to admin panel even if email fails
+      () => {
         setStatus("success");
-        addMessage(newMessage);
         formRef.current.reset();
         setTimeout(() => setStatus("idle"), 3000);
       },
@@ -121,7 +102,7 @@ const Contact = () => {
 
         {/* Right Side: Contact Form */}
         <div className="bg-zinc-900/30 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-2xl relative overflow-hidden">
-          {/* Status Feedback Overlay */}
+          {/* Success Overlay */}
           {status === "success" && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -131,20 +112,6 @@ const Contact = () => {
               <CheckCircle size={64} className="text-green-500 mb-4" />
               <h3 className="text-2xl font-bold text-white">Message Sent!</h3>
               <p className="text-gray-400">I'll get back to you soon.</p>
-            </motion.div>
-          )}
-
-          {status === "error" && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center z-20"
-            >
-              <AlertCircle size={64} className="text-red-500 mb-4" />
-              <h3 className="text-2xl font-bold text-white">Oops!</h3>
-              <p className="text-gray-400">
-                Something went wrong. Please try again.
-              </p>
             </motion.div>
           )}
 
